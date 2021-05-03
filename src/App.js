@@ -15,7 +15,9 @@ function App() {
 	const handleClick = () => {
 		console.log('handle clicked');
 		if (start === false) {
-			setMinutes(25);
+			if(shortBreaks === false && longBreaks  === false){
+				setMinutes(25);
+			}
 			setStart(true);
 		}
 		setPause(!pause);
@@ -78,7 +80,17 @@ function App() {
 				<h1>Pomodoro Timer</h1>
 				<h1>{breaks ? 'BREAK' : 'POMODORO'}</h1>
 				<div className="buttons">
-					<div className="button">pomodoro</div>
+					<div
+						className="button"
+						onClick={() => {
+							setMinutes(25);
+							setSeconds(0);
+							setPause(true);
+							setShortBreaks(true);
+						}}
+					>
+						pomodoro
+					</div>
 					<div
 						className="button"
 						onClick={() => {
